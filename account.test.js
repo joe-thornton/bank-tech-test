@@ -7,23 +7,23 @@ describe("account", () => {
   });
 
   it("creates a new account with a balance of 0", () => {
-    expect(account.get_balance()).toEqual(0);
+    expect(account.getBalance()).toEqual(0);
   });
 
   it("deposits money and displays the balance", () => {
     account.deposit(10);
-    expect(account.get_balance()).toEqual(10);
+    expect(account.getBalance()).toEqual(10);
   });
 
   it("deposits a different amount and displays the balance", () => {
     account.deposit(20);
-    expect(account.get_balance()).toEqual(20);
+    expect(account.getBalance()).toEqual(20);
   });
 
   it("can take 2 positive integer deposits", () => {
     account.deposit(10);
     account.deposit(20);
-    expect(account.get_balance()).toEqual(30);
+    expect(account.getBalance()).toEqual(30);
   });
 
   it("deposit does not accept a negative amount", () => {
@@ -37,4 +37,12 @@ describe("account", () => {
       account.deposit("ten");
     }).toThrow("Invalid input: amount must be input as a number, not text");
   });
+
+  // it("deposit does not an amount with more than 2 decimal places", () => {
+  //   expect(() => {
+  //     account.deposit(1.133);
+  //   }).toThrow(
+  //     "Invalid input: amount cannot have amounts that are fractions of a pence"
+  //   );
+  // });
 });
