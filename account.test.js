@@ -9,6 +9,6 @@ describe("account", () => {
   it("deposits money and displays the balance", () => {
     account = new Account();
     account.deposit(10);
-    expect(account.balance()).toEqual(10);
+    expect(account.get_balance()).toEqual(10);
   });
 });
