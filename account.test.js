@@ -31,4 +31,10 @@ describe("account", () => {
       account.deposit(-1);
     }).toThrow("Invalid input: amounts must be must be greater than 0");
   });
+
+  it("deposit does not accept a negative amount", () => {
+    expect(() => {
+      account.deposit("ten");
+    }).toThrow("Invalid input: amount must be input as a number, not text");
+  });
 });
