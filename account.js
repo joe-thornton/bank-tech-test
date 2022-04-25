@@ -4,7 +4,11 @@ class Account {
   }
 
   deposit(amount) {
-    this.balance += amount;
+    if (amount <= 0) {
+      throw "Invalid input: amounts must be must be greater than 0";
+    } else {
+      this.balance += amount;
+    }
   }
 
   get_balance() {

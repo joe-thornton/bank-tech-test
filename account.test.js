@@ -24,4 +24,11 @@ describe("account", () => {
     account.deposit(20);
     expect(account.get_balance()).toEqual(30);
   });
+
+  it("deposit does not accept a negative amount", () => {
+    account = new Account();
+    expect(() => {
+      account.deposit(-1);
+    }).toThrow("Invalid input: amounts must be must be greater than 0");
+  });
 });
