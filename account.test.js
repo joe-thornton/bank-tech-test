@@ -45,4 +45,14 @@ describe("account", () => {
       "Invalid input: amount cannot have amounts that are fractions of a pence"
     );
   });
+
+  it("can accept a 1 decimal place deposit", () => {
+    account.deposit(0.1);
+    expect(account.getBalance()).toEqual(0.1);
+  });
+
+  it("can accept a 2 decimal place deposit", () => {
+    account.deposit(0.11);
+    expect(account.getBalance()).toEqual(0.11);
+  });
 });
