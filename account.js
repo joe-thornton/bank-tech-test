@@ -9,11 +9,7 @@ class Account {
   }
 
   withdraw(amount) {
-    if (amount === 10) {
-      this.balance = 0;
-    } else {
-      this.balance = 5;
-    }
+    this.balance -= amount;
   }
 
   getBalance() {
