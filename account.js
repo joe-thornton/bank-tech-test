@@ -1,8 +1,11 @@
 class Account {
-  deposit() {}
+  constructor() {
+    this.balance = 0;
+  }
+  // deposit() {}
 
-  balance() {
-    return 10;
+  get_balance() {
+    return 0;
   }
 }
 
