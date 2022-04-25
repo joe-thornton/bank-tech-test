@@ -38,11 +38,11 @@ describe("account", () => {
     }).toThrow("Invalid input: amount must be input as a number, not text");
   });
 
-  // it("deposit does not an amount with more than 2 decimal places", () => {
-  //   expect(() => {
-  //     account.deposit(1.133);
-  //   }).toThrow(
-  //     "Invalid input: amount cannot have amounts that are fractions of a pence"
-  //   );
-  // });
+  it("deposit does not an amount with more than 2 decimal places", () => {
+    expect(() => {
+      account.deposit(1.133);
+    }).toThrow(
+      "Invalid input: amount cannot have amounts that are fractions of a pence"
+    );
+  });
 });
