@@ -3,7 +3,7 @@ class Account {
     this.balance = 0;
   }
   deposit(amount) {
-    this.balance = 10;
+    this.balance = amount;
   }
 
   get_balance() {

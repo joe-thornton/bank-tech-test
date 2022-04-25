@@ -11,4 +11,10 @@ describe("account", () => {
     account.deposit(10);
     expect(account.get_balance()).toEqual(10);
   });
+
+  it("deposits a different amount and displays the balance", () => {
+    account = new Account();
+    account.deposit(20);
+    expect(account.get_balance()).toEqual(20);
+  });
 });
