@@ -55,4 +55,10 @@ describe("account", () => {
     account.deposit(0.11);
     expect(account.getBalance()).toEqual(0.11);
   });
+
+  it("can make a deposit and then withdraw that amount", () => {
+    account.deposit(10);
+    account.withdraw(10);
+    expect(account.getBalance()).toEqual(0);
+  });
 });
