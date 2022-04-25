@@ -2,8 +2,9 @@ class Account {
   constructor() {
     this.balance = 0;
   }
+
   deposit(amount) {
-    this.balance = amount;
+    this.balance += amount;
   }
 
   get_balance() {

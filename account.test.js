@@ -17,4 +17,11 @@ describe("account", () => {
     account.deposit(20);
     expect(account.get_balance()).toEqual(20);
   });
+
+  it("can take 2 positive integer deposits", () => {
+    account = new Account();
+    account.deposit(10);
+    account.deposit(20);
+    expect(account.get_balance()).toEqual(30);
+  });
 });
