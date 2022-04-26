@@ -73,4 +73,13 @@ describe("account", () => {
     account.withdraw(3);
     expect(account.getBalance()).toEqual(7);
   });
+
+  it("cannot withdraw more than the account balance", () => {
+    account.deposit(10);
+    expect(() => {
+      account.withdraw(11);
+    }).toThrow(
+      "Invalid transaction: you do not have enough money in your account"
+    );
+  });
 });
