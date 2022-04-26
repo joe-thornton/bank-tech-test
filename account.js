@@ -1,3 +1,4 @@
+const Statement = require("./statement");
 const Transaction = require("./transaction");
 
 class Account {
@@ -5,15 +6,21 @@ class Account {
     this.transactions = [];
   }
 
-  deposit(amount) {
+  deposit(amount, date = new Date()) {
     this.#checkAmountIsValidNumber(amount);
-    this.transactions.push(new Transaction(amount));
+    this.transactions.push(new Transaction(amount, date));
   }
 
-  withdraw(amount) {
+  withdraw(amount, date = new Date()) {
     this.#checkAmountIsValidNumber(amount);
     this.#checkSufficientBalance(amount);
     this.transactions.push(new Transaction(-amount));
+  }
+
+  printStatement() {
+    const statement = new Statement(this.transactions);
+    const statementText = statement.getText();
+    console.log(statementText);
   }
 
   #checkAmountIsValidNumber(amount) {
@@ -26,16 +33,6 @@ class Account {
       throw "Invalid input: amount cannot have amounts that are fractions of a pence";
     }
     return;
-  }
-
-  printStatement() {
-    if (this.transactions.length === 0) {
-      console.log("No transactions - your balance is zero");
-    } else {
-      console.log(
-        "date || credit || debit || balance\n14/01/2021 || 1000.00 || || 1000.00"
-      );
-    }
   }
 
   getBalance() {
