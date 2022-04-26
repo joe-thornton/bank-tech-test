@@ -13,12 +13,7 @@ class Statement {
       const transactionTexts = [];
       this.transactions.forEach((t) => {
         currentTotal = currentTotal + t.getAmount();
-        const options = {
-          year: "numeric",
-          month: "numeric",
-          day: "numeric",
-        };
-        const dateString = t.getDate().toLocaleDateString("en-GB", options);
+        const dateString = this.getDateText(t.getDate());
         const transactionText = `${dateString} || ${t
           .getAmount()
           .toFixed(2)} || || ${currentTotal.toFixed(2)}`;
@@ -27,6 +22,15 @@ class Statement {
       const transactionsTextReversed = transactionTexts.reverse().join("\n");
       return `${transactionText}${transactionsTextReversed}`;
     }
+  }
+
+  getDateText(date) {
+    const options = {
+      year: "numeric",
+      month: "numeric",
+      day: "numeric",
+    };
+    return date.toLocaleDateString("en-GB", options);
   }
 }
 
