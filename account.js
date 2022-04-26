@@ -9,9 +9,7 @@ class Account {
   }
 
   withdraw(amount) {
-    if (amount > this.getBalance()) {
-      throw `Insufficient funds: you only have ${this.getBalance()} in your account`;
-    }
+    this.checkSufficientBalance(amount);
     this.transactions.push(new Transaction(-amount));
   }
 
@@ -29,6 +27,12 @@ class Account {
       throw "Invalid input: amount must be input as a number, not text";
     } else if (!decimalPattern.test(amount)) {
       throw "Invalid input: amount cannot have amounts that are fractions of a pence";
+    }
+  }
+
+  checkSufficientBalance(amount) {
+    if (amount > this.getBalance()) {
+      throw `Insufficient funds: you only have ${this.getBalance()} in your account`;
     }
   }
 }
