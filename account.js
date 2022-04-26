@@ -14,7 +14,7 @@ class Account {
   withdraw(amount, date = new Date()) {
     this.#checkAmountIsValidNumber(amount);
     this.#checkSufficientBalance(amount);
-    this.transactions.push(new Transaction(-amount));
+    this.transactions.push(new Transaction(-amount, date));
   }
 
   printStatement() {
