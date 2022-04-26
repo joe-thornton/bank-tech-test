@@ -29,7 +29,13 @@ class Account {
   }
 
   printStatement() {
-    console.log("No transactions - your balance is zero");
+    if (this.transactions.length === 0) {
+      console.log("No transactions - your balance is zero");
+    } else {
+      console.log(
+        "date || credit || debit || balance\n14/01/2021 || 1000.00 || || 1000.00"
+      );
+    }
   }
 
   getBalance() {

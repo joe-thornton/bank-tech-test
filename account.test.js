@@ -1,4 +1,5 @@
 const Account = require("./account");
+const mockDate = require("jest-date-mock");
 
 describe("account", () => {
   beforeEach((done) => {
@@ -99,6 +100,16 @@ describe("account", () => {
     account.printStatement();
     expect(console.log).toHaveBeenCalledWith(
       "No transactions - your balance is zero"
+    );
+  });
+
+  it("statement returns single transaction for deposit", () => {
+    transactionDate = new Date(2021, 1, 10, 0, 0, 0);
+    account.deposit(1000, transactionDate);
+    console.log = jest.fn();
+    account.printStatement();
+    expect(console.log).toHaveBeenCalledWith(
+      "date || credit || debit || balance\n14/01/2021 || 1000.00 || || 1000.00"
     );
   });
 });
