@@ -1,3 +1,5 @@
+const Transaction = require("./transaction");
+
 class Account {
   constructor() {
     this.transactions = [];
@@ -35,16 +37,6 @@ class Account {
     if (amount > this.getBalance()) {
       throw `Insufficient funds: you only have ${this.getBalance()} in your account`;
     }
-  }
-}
-
-class Transaction {
-  constructor(amount) {
-    this.amount = amount;
-  }
-
-  getAmount() {
-    return this.amount;
   }
 }
 
