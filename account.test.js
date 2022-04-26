@@ -93,4 +93,12 @@ describe("account", () => {
       "Invalid input: amount cannot have amounts that are fractions of a pence"
     );
   });
+
+  it("statement returns message saying no transactions", () => {
+    console.log = jest.fn();
+    account.printStatement();
+    expect(console.log).toHaveBeenCalledWith(
+      "No transactions - your balance is zero"
+    );
+  });
 });

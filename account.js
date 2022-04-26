@@ -6,23 +6,17 @@ class Account {
   }
 
   deposit(amount) {
-    this.checkAmountIsValidNumber(amount);
+    this.#checkAmountIsValidNumber(amount);
     this.transactions.push(new Transaction(amount));
   }
 
   withdraw(amount) {
-    this.checkAmountIsValidNumber(amount);
-    this.checkSufficientBalance(amount);
+    this.#checkAmountIsValidNumber(amount);
+    this.#checkSufficientBalance(amount);
     this.transactions.push(new Transaction(-amount));
   }
 
-  getBalance() {
-    return this.transactions
-      .map((t) => t.getAmount())
-      .reduce((acc, prev) => acc + prev, 0);
-  }
-
-  checkAmountIsValidNumber(amount) {
+  #checkAmountIsValidNumber(amount) {
     const decimalPattern = /^\d+(\.\d{1,2})?$/;
     if (amount <= 0) {
       throw "Invalid input: amounts must be must be greater than 0";
@@ -31,9 +25,20 @@ class Account {
     } else if (!decimalPattern.test(amount)) {
       throw "Invalid input: amount cannot have amounts that are fractions of a pence";
     }
+    return;
   }
 
-  checkSufficientBalance(amount) {
+  printStatement() {
+    console.log("No transactions - your balance is zero");
+  }
+
+  getBalance() {
+    return this.transactions
+      .map((t) => t.getAmount())
+      .reduce((acc, prev) => acc + prev, 0);
+  }
+
+  #checkSufficientBalance(amount) {
     if (amount > this.getBalance()) {
       throw `Insufficient funds: you only have ${this.getBalance()} in your account`;
     }
