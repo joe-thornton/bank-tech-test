@@ -46,16 +46,6 @@ describe("account", () => {
     );
   });
 
-  it("can accept a 1 decimal place deposit", () => {
-    account.deposit(0.1);
-    expect(account.getBalance()).toEqual(0.1);
-  });
-
-  it("can accept a 2 decimal place deposit", () => {
-    account.deposit(0.11);
-    expect(account.getBalance()).toEqual(0.11);
-  });
-
   it("can make a deposit and then withdraw that amount", () => {
     account.deposit(10);
     account.withdraw(10);
@@ -79,5 +69,28 @@ describe("account", () => {
     expect(() => {
       account.withdraw(11);
     }).toThrow("Insufficient funds: you only have 10 in your account");
+  });
+
+  it("withdraw does not accept a negative amount", () => {
+    account.deposit(10);
+    expect(() => {
+      account.withdraw(-1);
+    }).toThrow("Invalid input: amounts must be must be greater than 0");
+  });
+
+  it("withdraw does not accept a negative amount", () => {
+    account.deposit(10);
+    expect(() => {
+      account.withdraw("ten");
+    }).toThrow("Invalid input: amount must be input as a number, not text");
+  });
+
+  it("withdraw does not an amount with more than 2 decimal places", () => {
+    account.deposit(10);
+    expect(() => {
+      account.withdraw(1.133);
+    }).toThrow(
+      "Invalid input: amount cannot have amounts that are fractions of a pence"
+    );
   });
 });

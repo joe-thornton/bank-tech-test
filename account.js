@@ -9,6 +9,7 @@ class Account {
   }
 
   withdraw(amount) {
+    this.checkAmountIsValidNumber(amount);
     this.checkSufficientBalance(amount);
     this.transactions.push(new Transaction(-amount));
   }
