@@ -10,7 +10,7 @@ class Account {
 
   withdraw(amount) {
     if (amount > this.getBalance()) {
-      throw "Invalid transaction: you do not have enough money in your account";
+      throw `Insufficient funds: you only have ${this.getBalance()} in your account`;
     }
     this.transactions.push(new Transaction(-amount));
   }

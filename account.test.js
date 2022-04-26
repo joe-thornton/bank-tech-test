@@ -78,8 +78,6 @@ describe("account", () => {
     account.deposit(10);
     expect(() => {
       account.withdraw(11);
-    }).toThrow(
-      "Invalid transaction: you do not have enough money in your account"
-    );
+    }).toThrow("Insufficient funds: you only have 10 in your account");
   });
 });
